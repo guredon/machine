@@ -4,7 +4,7 @@
 ### お金を入れる ###
 
 puts'お金を入れて下さい'
-puts'¥100以上で変えます'
+puts'¥100以上で買えます'
 
 yen = gets.chomp.to_i      # chompで、Enterを除くようにする
                            # to_iで、整数として扱う
