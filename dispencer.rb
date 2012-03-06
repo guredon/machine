@@ -9,6 +9,7 @@ puts'¥100以上で買えます'
 
 yen = yen.to_i + gets.chomp.to_i      # chompで、Enterを除くようにする
                                       # to_iで、整数として扱う
+
 while yen < 100
   puts'もっと入れて下さい (´ω `)'
   yen = yen.to_i + gets.chomp.to_i
@@ -32,5 +33,11 @@ if a == 7
   puts'おめでとうございます(・∀ ・) 当たりました！もう１本選んで下さい'
   drink = gets.chomp
   puts 'どうぞ！' + drink.to_s + 'です'
+  a = (rand(10))
+  if a == 7 
+    puts'２連チャンｷﾀ━━━━ (ﾟ∀ ﾟ)━━━━ !! もう１本選んで下さい'
+    drink = gets.chomp
+    puts'どうぞ！' + drink.to_s + 'です'
+  end
 end
 
