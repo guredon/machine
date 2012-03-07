@@ -39,13 +39,9 @@ puts'飲み物を入力して下さい'
 
 end
 
-
 drink = Nomimono.new 
-drink.selection
 
-puts''
-puts 'どうぞ！' + drink.to_s + 'です'
-#puts 'どうぞ！' + drink + 'です'
+puts 'どうぞ！' + drink.selection + 'です'
 puts''
 
 yen = yen.to_i - 100                       # 飲み物を買ったので、100円を引く 
