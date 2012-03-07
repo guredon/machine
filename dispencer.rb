@@ -28,24 +28,31 @@ yen.insert
 
 ##### 飲み物を選択 #####
 
-class Nomimono 
+class Nomimono
 
 puts''
 puts'飲み物を入力して下さい'
 
-drink = gets.chomp
-
-puts''
-puts 'どうぞ！' + drink.to_s + 'です'
-puts''
-
-yen = yen - 100                       # 飲み物を買ったので、100円を引く 
+  def selection 
+    @b = gets.chomp.to_s
+  end
 
 end
 
+
+drink = Nomimono.new 
+drink.selection
+
+puts''
+puts 'どうぞ！' + drink.to_s + 'です'
+#puts 'どうぞ！' + drink + 'です'
+puts''
+
+yen = yen.to_i - 100                       # 飲み物を買ったので、100円を引く 
+
+
 ##### 当たりつき #####
 
-class Atari
 
 z = (rand(10))
 
@@ -68,11 +75,9 @@ if z == 7
   end
 end
 
-end
 
 ##### おつり #####
 
-class Otsuri
 
 if yen > 0
 
@@ -81,6 +86,5 @@ if yen > 0
 
 end
 
-end
 
 
