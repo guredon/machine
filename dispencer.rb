@@ -2,6 +2,8 @@
 
 # puts'' は改行
 
+
+
 ##### お金を入れる #####
 
 puts''
@@ -20,10 +22,15 @@ class Okane
     end
   end
 
+  def sum
+   @a = @a - 100                           # 飲み物を買ったので、100円を引く 
+  end
+
 end
 
 yen = Okane.new                             # インスタンス変数を yen に代入
 yen.insert
+
 
 
 ##### 飲み物を選択 #####
@@ -41,35 +48,46 @@ end
 
 drink = Nomimono.new 
 
-puts 'どうぞ！' + drink.selection + 'です'
+puts 'どうぞ！ (・へ・)つ ' + drink.selection + 'です'
 puts''
 
-yen = yen.to_i - 100                       # 飲み物を買ったので、100円を引く 
+puts yen.sum
+
 
 
 ##### 当たりつき #####
 
+class Atari
 
-z = (rand(10))
+  def rand
+    @c = (rand(10))
+  end
+
+end
+
+z = Atari.new
+
+#z = (rand(10))
 
 # 当たり（１回目）
-if z == 7 
+if z.rand == 7 
   
   puts'おめでとうございます(・∀ ・) 当たりました！もう１本選んで下さい'
-  drink = gets.chomp
+  drink.selection = gets.chomp
   puts 'どうぞ！' + drink.to_s + 'です'
   puts''
-  z = (rand(10))
+  #z = (rand(10))
 
 
 # 当たり（２回目）
-  if z == 7
+if z.rand == 7
     puts'２連チャンｷﾀ━━━━ (ﾟ∀ ﾟ)━━━━ !! もう１本選んで下さい'
-    drink = gets.chomp
+    drink.selection = gets.chomp
     puts'どうぞ！' + drink.to_s + 'です'
     puts''
   end
 end
+
 
 
 ##### おつり #####
