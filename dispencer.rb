@@ -22,7 +22,7 @@ class Okane
     end
   end
 
-  def sum
+  def oturi                                # おつりメソッド 
    @a = @a - 100                           # 飲み物を買ったので、100円を引く 
   end
 
@@ -51,7 +51,6 @@ drink = Nomimono.new
 puts 'どうぞ！ (・へ・)つ ' + drink.selection + 'です'
 puts''
 
-puts yen.sum
 
 
 
@@ -105,13 +104,8 @@ end
 
 ##### おつり #####
 
-
-if yen > 0
-
-  puts 'ありがとうございましたm(_ _)m　おつりは' + yen.to_s + '円です'
-  puts''
-
-end
+puts 'ありがとうございましたm(_ _)m　おつりは' + yen.oturi.to_s + '円です'
+puts ''
 
 
 
