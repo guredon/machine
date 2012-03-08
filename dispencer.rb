@@ -59,28 +59,41 @@ puts yen.sum
 
 class Atari
 
-  def rand
-    @c = (rand(10))
-  end
+  def random
+    @c = (rand(1))
+
+    if @c == 0 
+
+      puts'おめでとうございます(・∀ ・) 当たりました！もう１本選んで下さい'
+      @d = gets.chomp.to_s
+      puts 'どうぞ！ (・へ・)つ ' + @d + 'です'
+      puts''
+    
+    end
 
 end
 
+
+#drink = Atari.new
+#drink.random
+
+
 z = Atari.new
 
-#z = (rand(10))
+
 
 # 当たり（１回目）
-if z.rand == 7 
+#if z.random == 7 
   
-  puts'おめでとうございます(・∀ ・) 当たりました！もう１本選んで下さい'
-  drink.selection = gets.chomp
-  puts 'どうぞ！' + drink.to_s + 'です'
-  puts''
-  #z = (rand(10))
+  #puts'おめでとうございます(・∀ ・) 当たりました！もう１本選んで下さい'
+  #drink.selection = gets.chomp
+  #puts 'どうぞ！' + drink.to_s + 'です'
+  #puts''
+   ##z = (rand(10))
 
 
 # 当たり（２回目）
-if z.rand == 7
+if z.random == 7
     puts'２連チャンｷﾀ━━━━ (ﾟ∀ ﾟ)━━━━ !! もう１本選んで下さい'
     drink.selection = gets.chomp
     puts'どうぞ！' + drink.to_s + 'です'
