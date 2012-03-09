@@ -1,111 +1,76 @@
 # -*- coding: utf-8 -*-
 
-# puts'' は改行
 
+class Okane                               ## お金を入れるclass ##
 
-
-##### お金を入れる #####
-
-puts''
-puts'お金を入れて下さい'
-puts'¥100以上で買えます'
-
-class Okane 
-
-  def insert
-    @a = @a.to_i + gets.chomp.to_i          # @a は、インスタンス変数
-                                            # chompで、Enterを除くようにする
-                                            # to_iで、整数として扱う
+  def insert                              
+    @a = @a.to_i + gets.chomp.to_i        # @a は、入れたお金を保持する、インスタンス変数
+                                          # chompで、Enterを除くようにする
+                                          # to_iで、整数として扱う
     while @a < 100
-      puts'もっと入れて下さい (´ω `)'
+      puts'もっと入れて下さい (´ω `)'     # お金が100円未満の場合は、追加で入力させる
       @a = @a.to_i + gets.chomp.to_i
     end
   end
 
-  def oturi                                # おつりメソッド 
-   @a = @a - 100                           # 飲み物を買ったので、100円を引く 
+  def oturi
+   @a = @a - 100                          # 飲み物を買ったので、100円を引く 
   end
 
 end
 
-yen = Okane.new                             # インスタンス変数を yen に代入
-yen.insert
+
+
+class Nomimono                            ## 飲み物を入力するclass ##
+
+  def selection 
+    @b = gets.chomp.to_s                  # @b は、飲み物の名前を保持する、インスタンス変数
+  end
+
+end
 
 
 
-##### 飲み物を選択 #####
+class Atari                               ## 当たりクジclass ##
 
-class Nomimono
+  def random
+    @c = (rand(10))                       # @c は、rand関数で出た数字を保持する、インスタンス変数
+
+    if @c == 7                            # もし、@c の数字が７の場合、もう１本もらえる
+
+      puts'当たりました！ ｷﾀ━━━━ (ﾟ∀ ﾟ)━━━━ !! もう１本入力して下さい'
+      @b = gets.chomp.to_s
+      puts 'どうぞ！ (・へ・)つ ' + @b + 'です'
+      puts''
+    
+    end
+  end
+
+end
+
+
+
+##### 処理 #####
+
+puts''                                     # puts'' は改行
+puts'お金を入れて下さい'
+puts'¥100以上で買えます'
+
+yen = Okane.new                            # Okaneクラスを使うため、変数yenを宣言 
+yen.insert                                 # insertメソッドを実行する（お金を入力してもらう）
 
 puts''
 puts'飲み物を入力して下さい'
 
-  def selection 
-    @b = gets.chomp.to_s
-  end
+drink = Nomimono.new                       # Nomimonoクラスを使うため、変数drinkを宣言 
 
-end
-
-drink = Nomimono.new 
-
-puts 'どうぞ！ (・へ・)つ ' + drink.selection + 'です'
+puts 'どうぞ！ (・へ・)つ ' + drink.selection + 'です'                          # @b で保持している飲料名を出力する
 puts''
 
+hit = Atari.new                            # Atariクラスを使うため、変数hitを宣言
+hit.random                                 # randomメソッドを実行する（10分の1の確率で当たる）
 
 
-
-##### 当たりつき #####
-
-class Atari
-
-  def random
-    @c = (rand(1))
-
-    if @c == 0 
-
-      puts'おめでとうございます(・∀ ・) 当たりました！もう１本選んで下さい'
-      @d = gets.chomp.to_s
-      puts 'どうぞ！ (・へ・)つ ' + @d + 'です'
-      puts''
-    
-    end
-
-end
-
-
-#drink = Atari.new
-#drink.random
-
-
-z = Atari.new
-
-
-
-# 当たり（１回目）
-#if z.random == 7 
-  
-  #puts'おめでとうございます(・∀ ・) 当たりました！もう１本選んで下さい'
-  #drink.selection = gets.chomp
-  #puts 'どうぞ！' + drink.to_s + 'です'
-  #puts''
-   ##z = (rand(10))
-
-
-# 当たり（２回目）
-if z.random == 7
-    puts'２連チャンｷﾀ━━━━ (ﾟ∀ ﾟ)━━━━ !! もう１本選んで下さい'
-    drink.selection = gets.chomp
-    puts'どうぞ！' + drink.to_s + 'です'
-    puts''
-  end
-end
-
-
-
-##### おつり #####
-
-puts 'ありがとうございましたm(_ _)m　おつりは' + yen.oturi.to_s + '円です'
+puts 'ありがとうございましたm(_ _)m　おつりは' + yen.oturi.to_s + '円です'      # @a で保持している残金を出力する
 puts ''
-
-
 
