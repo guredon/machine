@@ -2,14 +2,18 @@
 
 class Jihanki
 
-  def initialize                          # 初期化。始めにinsertメソッドに飛ぶ
-    insert
+
+ ## initialize：初期化 ##
+
+  def initialize                          
+    insert                                # 始めにinsertメソッドに飛ぶ
   end
 
 
-  def insert                              ## お金を入れる Method ##
+ ## insert：お金を入れる ##
 
-    puts''                                # puts'' は改行
+  def insert                              
+    puts''                                               # puts'' は改行
     puts'¥100で飲み物が買えるので、お金を入れて下さい'
     puts'¥10 ¥50 ¥100 ¥500 が使えます'
 
@@ -29,13 +33,11 @@ class Jihanki
          @s = @s.to_i + @a.to_i           ## 含まれている（お金が正しく入力されている）場合は、
                                            # 入力したお金を、合計金額に加算する
       
-         if @s < 100                       # 合計金額が100円未満の場合は、追加で入力させる
-
+         if @s < 100                                   # 合計金額が100円未満の場合は、追加で入力させる
            puts'現在' + @s.to_s + '円入っています'     # to_sで、文字列として扱う
            puts'もっと入れて下さい (´ω `)' 
            @a = gets.chomp.to_i
            puts''
-       
          end
      
      else                                 ## 含まれていない（お金が正しく入力されていない）場合は、再度入力させる
@@ -48,18 +50,25 @@ class Jihanki
      end
 
     end
+    oturi                                 # oturiメソッドに飛ぶ
   end
+
+
+ ## oturi：おつりの計算 ##
 
   def oturi
    @s = @s - 100                          # 飲み物を買ったので、合計金額から100円を引く 
+   selection                              # selectionメソッドに飛ぶ
   end
 
 
-  def selection                           ## 飲み物を入力する Method ##
+ ## selection：飲み物を入力する ##
+
+  def selection
     puts'飲み物を入力して下さい'
-    @b = gets.chomp.to_s                  # @b は、飲み物の名前を保持する、インスタンス変数
-    puts 'どうぞ！ (・へ・)つ ' + @b + 'です'                          # @b で保持している飲料名を出力する
-    puts''
+    @b = gets.chomp                       # @b は、飲み物の名前を保持する、インスタンス変数
+                                          # getsは、getstringの略。従って、to_sの必要はない
+    juice                                 # juiceメソッドへ飛ぶ 
 
 
    ## 当たりくじ ##
@@ -69,9 +78,8 @@ class Jihanki
     if @c == 7                            # もし、@c の数字が７の場合、もう１本もらえる
 
       puts'当たりました！ ｷﾀ━━━━ (ﾟ∀ ﾟ)━━━━ !! もう１本入力して下さい'
-      @b = gets.chomp                     # getsは、getstringの略。従って、to_sの必要はない
-      puts 'どうぞ！ (・へ・)つ ' + @b + 'です'
-      puts''
+      @b = gets.chomp                     
+      juice                               # juiceメソッドへ飛ぶ 
     
     end
 
@@ -79,8 +87,15 @@ class Jihanki
     puts ''
   end
 
-end
 
+ ## juice：入力した飲み物を出力する ##
+
+  def juice
+    puts 'どうぞ！ (・へ・)つ ' + @b + 'です'
+    puts''
+  end
+
+end
 
 
 
@@ -104,18 +119,19 @@ end
 # 飲みもの選択
 # アウトプットするときだけ、別メソッドを作る
 #
- #       exit
+#       exit
+
 
 #### 処理 #####
 
-yen = Jihanki.new
-yen.oturi
-yen.selection
+#yen = Jihanki.new
+#yen.oturi
+#yen.selection
 
 #juice = Nomimono.new
 #puts juice.selection
 
 
-#Jihanki.new
+Jihanki.new
 
 
