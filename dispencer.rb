@@ -1,9 +1,18 @@
 # -*- coding: utf-8 -*-
 
+class Jihanki
 
-class Okane                               ## お金を入れるclass ##
+  def initialize                          # 初期化。始めにinsertメソッドに飛ぶ
+    insert
+  end
 
-  def insert                              
+
+  def insert                              ## お金を入れる Method ##
+
+    puts''                                # puts'' は改行
+    puts'¥100で飲み物が買えるので、お金を入れて下さい'
+    puts'¥10 ¥50 ¥100 ¥500 が使えます'
+
     @a = gets.chomp.to_i                  # @a は、入れたお金を保持する、インスタンス変数
                                           # chompで、Enterを除くようにする
                                           # to_iで、整数として扱う
@@ -45,23 +54,16 @@ class Okane                               ## お金を入れるclass ##
    @s = @s - 100                          # 飲み物を買ったので、合計金額から100円を引く 
   end
 
-end
 
-
-
-class Nomimono                            ## 飲み物を入力するclass ##
-
-  def selection 
+  def selection                           ## 飲み物を入力する Method ##
+    puts'飲み物を入力して下さい'
     @b = gets.chomp.to_s                  # @b は、飲み物の名前を保持する、インスタンス変数
-  end
-
-end
-
+    puts 'どうぞ！ (・へ・)つ ' + @b + 'です'                          # @b で保持している飲料名を出力する
+    puts''
 
 
-class Atari                               ## 当たりクジclass ##
+   ## 当たりくじ ##
 
-  def random
     @c = (rand(10))                       # @c は、rand関数で出た数字を保持する、インスタンス変数
 
     if @c == 7                            # もし、@c の数字が７の場合、もう１本もらえる
@@ -72,9 +74,14 @@ class Atari                               ## 当たりクジclass ##
       puts''
     
     end
+
+    puts 'ありがとうございましたm(_ _)m　おつりは' + @s.to_s + '円です'      # @s で保持している残金を出力する
+    puts ''
   end
 
 end
+
+
 
 
 # ツッコミ：この場合だと、お金払わなくても買えちゃうよね、と。
@@ -83,7 +90,7 @@ end
 # 
 #
 # いきなり
-                              # puts "#{Nomimono.new.selection} です"
+#  puts "{Jihanki.new.selection} です"
 # とかできちゃう。
 #
 #
@@ -93,28 +100,22 @@ end
 # 自販機で買う時に当たりの処理とか意識しないんじゃないかなー、とか思った。
 #
 # あと、どうぞ、〜です的な処理は二つかかれてるから一つに出来ないかな、とか検討できるはず
+#
+# 飲みもの選択
+# アウトプットするときだけ、別メソッドを作る
+#
+ #       exit
 
-                                #exit
 #### 処理 #####
 
-puts''                                     # puts'' は改行
-puts'¥100で飲み物が買えるので、お金を入れて下さい'
-puts'¥10 ¥50 ¥100 ¥500 が使えます'
+yen = Jihanki.new
+yen.oturi
+yen.selection
 
-yen = Okane.new                            # Okaneクラスを使うため、変数yenを宣言 
-yen.insert                                 # insertメソッドを実行する（お金を入力してもらう）
-
-puts'飲み物を入力して下さい'
-
-drink = Nomimono.new                       # Nomimonoクラスを使うため、変数drinkを宣言 
-
-puts 'どうぞ！ (・へ・)つ ' + drink.selection + 'です'                          # @b で保持している飲料名を出力する
-puts''
-
-hit = Atari.new                            # Atariクラスを使うため、変数hitを宣言
-hit.random                                 # randomメソッドを実行する（10分の1の確率で当たる）
+#juice = Nomimono.new
+#puts juice.selection
 
 
-puts 'ありがとうございましたm(_ _)m　おつりは' + yen.oturi.to_s + '円です'      # @s で保持している残金を出力する
-puts ''
+#Jihanki.new
+
 
